@@ -6,7 +6,7 @@ export const TextStyles = StyleSheet.create({
     // fontFamily: "helvetica",
     fontSize: 35,
     fontWeight: "bold",
-    color: Colors.amber900,
+    color: Colors.green700,
   },
 
   message: {

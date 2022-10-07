@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {memo, useState } from "react";
 import {
   View,
   Text,
@@ -13,11 +13,12 @@ import { styles, platform } from "./LoginStyles";
 import { TextStyles } from "../../assets/constants/TextStyles";
 import { StatusBar } from "expo-status-bar";
 import { Colors } from "react-native-paper";
+import AntDesign from "@expo/vector-icons/Ionicons"
 import db from "../../db/db";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../app_store/usersSlice";
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = memo(({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -63,7 +64,7 @@ const LoginScreen = ({ navigation }) => {
             }
           },
           (txn, error) => {
-            console.log("UserDb", error);
+            // console.log("UserDb", error);
             Alert.alert(
               "Warning!",
               "No record found for your credential. Please, register a new account",
@@ -73,7 +74,7 @@ const LoginScreen = ({ navigation }) => {
         );
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -83,41 +84,33 @@ const LoginScreen = ({ navigation }) => {
       source={require("../../assets/images/login_gradientBg.png")}
     >
       <ScrollView style={{ width: "auto" }}>
-        <StatusBar backgroundColor={Colors.amber900} />
-        <Text style={styles.title}>Tech News Login</Text>
+        <StatusBar backgroundColor="green" />
+        <Text style={styles.title}>Meristem</Text>
         <Text style={{ ...styles.message, ...TextStyles.message }}>
-          Please, enter your login details here
+          Your Wealth security is guaranteed
         </Text>
         <View style={styles.logoContainer}>
           <Image
             style={styles.logo}
-            source={require("../../assets/images/brainstem_logo_black_white.png")}
+            source={require("../../assets/images/meristem_app_logo.png")}
           />
         </View>
         <View style={styles.loginCard}>
-          <Text style={styles.title}>Welcome back!</Text>
+          <Text style={styles.title}>Login here!</Text>
           <View style={{ ...styles.row, ...styles.textInputCont }}>
-            <Image
-              style={styles.icon}
-              source={require("../../assets/images/brainstem_logo_black_white.png")}
-            />
+            <AntDesign name="mail" size={22} color="green" />
             <TextInput
               style={styles.textInput}
-              placeholder="Input email here"
-              placeholderTextColor={Colors.amber900}
+              placeholder="Email"
               defaultValue={email}
               onChangeText={(newText) => setEmail(newText)}
             />
           </View>
           <View style={{ ...styles.row, ...styles.textInputCont }}>
-            <Image
-              style={styles.icon}
-              source={require("../../assets/images/brainstem_logo_black_white.png")}
-            />
+          <AntDesign name="key" size={22} color="green" />
             <TextInput
               style={styles.textInput}
-              placeholder="input password here"
-              placeholderTextColor={Colors.amber900}
+              placeholder="Password"
               defaultValue={password}
               onChangeText={(newPassword) => setPassword(newPassword)}
               secureTextEntry
@@ -142,6 +135,6 @@ const LoginScreen = ({ navigation }) => {
       </ScrollView>
     </ImageBackground>
   );
-};
+});
 
 export default LoginScreen;

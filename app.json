@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "techieNews",
-    "slug": "techieNews",
+    "name": "meristem",
+    "slug": "meristem",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/brainstem_logo_black_white.png",
+    "icon": "./assets/images/invest.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/images/brainstem_logo_black_white.png",
+      "image": "./assets/images/meristem_app_logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,12 +22,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/brainstem_logo_black_white.png",
+        "foregroundImage": "./assets/images/invest.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.devmide.meristem"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b3b3ea52-35b4-4e7b-8879-1e1a1fe3387f"
+      }
     }
   }
 }

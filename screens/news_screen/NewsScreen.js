@@ -1,120 +1,78 @@
 // import axios from "axios";
-import React, { Suspense, useEffect, useState } from "react";
+import React, {memo, Suspense, useEffect, useState } from "react";
 import {
   View,
   Text,
   ImageBackground,
-  FlatList,
-  TouchableOpacity,
+  Image, ScrollView, TouchableOpacity
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { styles } from "../login_screen/LoginStyles";
 import { Colors } from "react-native-paper";
 import Loading from "../components/Loading";
 
-import { useDispatch, useSelector } from "react-redux";
-import { getListOfNewsIds } from "../../app_store/listOfNewsIdsSlice";
-import { getNewsItem } from "../../app_store/newsSlice";
 
 //lazy loading component
-const LazyNewsItem = React.lazy(() => import("../components/NewsItem"));
+// const LazyNewsItem = React.lazy(() => import("../components/NewsItem"));
 
-const NewsScreen = ({ navigation }) => {
-  const dispatch = useDispatch();
-  const { listOfNewsIds } = useSelector((state) => state.listOfNewsIds);
-  const { news } = useSelector((state) => state.news);
-
-  //news pagination
-  const [pageSize, setPageSize] = useState(0);
-
-  useEffect(() => {
-    dispatch(getListOfNewsIds());
-    let timedLoadMoreNews = setTimeout(() => {
-      loadMoreNews();
-    }, 3000);
-
-    return () => {
-      clearTimeout(timedLoadMoreNews);
-    };
-  }, [news]);
-
-  const loadMoreNews = async () => {
-    var i = listOfNewsIds.length - pageSize;
-    try {
-      if (i < 10) {
-        await listOfNewsIds.slice(i).map((id) => {
-          dispatch(getNewsItem(id));
-        });
-        setPageSize(pageSize + i);
-        return;
-      }
-
-      await listOfNewsIds.slice(pageSize, pageSize + 10).map((id) => {
-        dispatch(getNewsItem(id));
-        // console.log(news);
-      });
-      setPageSize(pageSize + 10);
-    } catch (error) {
-      // console.log(error);
-    }
-  };
-
-  const itemToRender = ({ item }) => (
-    <TouchableOpacity
-      onPress={() => {
-        navigation.navigate("Details", { url: item.url });
-      }}
-    >
-      <Suspense fallback={<Loading />}>
-        <LazyNewsItem item={item} />
-      </Suspense>
-    </TouchableOpacity>
-  );
-
-  const handleEmptyList = () => {
-    return (
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={loadMoreNews}
-        style={{
-          backgroundColor: "black",
-          borderRadius: 100,
-          marginTop: 50,
-          marginHorizontal: "25%",
-        }}
-      >
-        <Text style={{ color: Colors.white, padding: 5, textAlign: "center" }}>
-          Please, check your network and tap me to reload
-        </Text>
-      </TouchableOpacity>
-    );
-  };
-
-  const footer = () => {
-    return <Loading />;
-  };
+const NewsScreen = React.memo(({ navigation }) => {
 
   return (
     <ImageBackground
-      style={{ flex: 1, marginTop: 45 }}
+      style={{ flex: 1, marginTop: 30 }}
       source={require("../../assets/images/news_bg_gradient.png")}
     >
-      <StatusBar backgroundColor="#f4511e" />
+      <StatusBar backgroundColor="green" />
       <View>
-        <Text style={styles.title}> News</Text>
+        <Text style={styles.title}>Meristem</Text>
       </View>
 
-      <FlatList
-        data={news}
-        renderItem={itemToRender}
-        keyExtractor={(item) => item.key}
-        extraData={news}
-        onEndReachedThreshold={0.4}
-        onEndReached={loadMoreNews}
-        ListFooterComponent={footer}
-        ListEmptyComponent={handleEmptyList}
-      />
+      <View>
+        <Image style={styles.images} source={require("../../assets/images/landing_page.png")} />
+      </View>
+
+      <ScrollView style={styles.productSV}>
+      <Text style={{ ...styles.title, fontSize: 22}}> Products And Services</Text>
+        <View style={styles.productContainer}>
+          <TouchableOpacity style={styles.productMenu} onPress={null}>
+            <Image style={styles.productImage} source={require("../../assets/images/invest.png")} />
+            <Text style={styles.productLabel}>Invest</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.productMenu} onPress={null}>
+            <Image style={styles.productImage} source={require("../../assets/images/stock.png")} />
+            <Text style={styles.productLabel}>Stock Trading</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.productMenu} onPress={null}>
+            <Image style={styles.productImage} source={require("../../assets/images/estate.png")} />
+            <Text style={styles.productLabel}>Estates And Trustees</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.productMenu} onPress={null}>
+            <Image style={styles.productImage} source={require("../../assets/images/financial.png")} />
+            <Text style={styles.productLabel}>Financial Advisory</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.productMenu} onPress={null}>
+            <Image style={styles.productImage} source={require("../../assets/images/wealth.png")} />
+            <Text style={styles.productLabel}>Wealth Management</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.productMenu} onPress={null}>
+            <Image style={styles.productImage} source={require("../../assets/images/registrars.png")} />
+            <Text style={styles.productLabel}>Registrars And Probate</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.productMenu} onPress={null}>
+            <Image style={styles.productImage} source={require("../../assets/images/loans.png")} />
+            <Text style={styles.productLabel}>Loans And Leases</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+
+      
     </ImageBackground>
   );
-};
+});
 export default NewsScreen;

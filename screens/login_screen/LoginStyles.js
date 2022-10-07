@@ -11,7 +11,7 @@ export const platform = StyleSheet.create({
           height: "100%",
         }
       : {
-          marginTop: 50,
+          marginTop: 40,
           width: "100%",
           height: "100%",
         },
@@ -37,6 +37,44 @@ export const styles = StyleSheet.create({
     ...TextStyles.title,
   },
 
+  images:{
+    width: '90%',
+    height: 200,
+    margin: '5%',
+    borderRadius: 10
+  },
+
+  productSV:{
+    width: 'auto',
+    height: 'auto'
+  },
+  productContainer:{
+    width: '100%',
+    height: '100%',
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    marginBottom: 50
+  },
+
+  productImage:{
+    width: 100,
+    height: 100,
+    borderRadius: 20
+  },
+
+  productLabel:{
+    textAlign: "center",
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: 'green'
+  },
+  productMenu:{
+    marginVertical: 10
+  },
+
   message: {
     textAlign: "center",
   },
@@ -47,11 +85,13 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    width: 80,
-    height: 80,
-    borderRadius: 10,
-    marginTop: 50,
+    width: 150,
+    height: 150,
+    borderRadius: 20,
+    marginTop: 10,
   },
+
+
 
   loginCard: {
     width: "96%",
@@ -80,16 +120,17 @@ export const styles = StyleSheet.create({
     marginHorizontal: "5%",
     marginVertical: 10,
     borderWidth: 2,
-    borderColor: Colors.amber900,
-    padding: 5,
-    backgroundColor: Colors.white
+    borderColor: 'green',
+    backgroundColor: 'white'
   },
 
   textInput: {
-    width: "80%",
+    width: "90%",
     height: 50,
-    borderTopEndRadius: 10,
-    borderBottomStartRadius: 10,
+    paddingLeft: 5,
+    color: 'green',
+    fontSize: 22,
+    // fontWeight: 'bold'
   },
   
   link:{
@@ -105,7 +146,7 @@ export const styles = StyleSheet.create({
     marginVertical: 20,
     marginHorizontal: "5%",
     borderRadius: 10,
-    backgroundColor: Colors.amber900,
+    backgroundColor: "green",
   },
 
   btnText: {

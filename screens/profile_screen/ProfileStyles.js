@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     padding: 10,
     textAlignVertical: "center",
-    color: Colors.amber900,
+    color: 'green',
   },
   text: {
     ...TextStyles.message,

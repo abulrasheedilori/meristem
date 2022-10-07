@@ -14,7 +14,7 @@ function BottomNavigator() {
       initialRouteName="Home"
       screenOptions={{
         headerShown: false,
-        headerStyle: { backgroundColor: "#f4511e" },
+        headerStyle: { backgroundColor: "green" },
         presentation: "modal",
       }}
       backBehaviour="history"
@@ -22,7 +22,7 @@ function BottomNavigator() {
       labelled={true}
       activeColor="#FFFFFF"
       inactiveColor="#000000"
-      barStyle={{ backgroundColor: "#f4511e", paddingBottom: 0 }}
+      barStyle={{ backgroundColor: "green", paddingBottom: 0 }}
     >
       <Tab.Screen
         name="Home"
@@ -40,7 +40,7 @@ function BottomNavigator() {
         component={ProfileScreen}
         options={{
           headerShown: false,
-          tabBarLabel: "Profile",
+          tabBarLabel: "Admin",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="account" color={color} size={26} />
           ),

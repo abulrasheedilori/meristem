@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {memo, useState } from "react";
 import {
   View,
   Text,
@@ -11,10 +11,11 @@ import {
 import { styles, platform } from "../login_screen/LoginStyles";
 import { TextStyles } from "../../assets/constants/TextStyles";
 import { StatusBar } from "expo-status-bar";
-import { Colors } from "react-native-paper";
+import AntDesign from "@expo/vector-icons/Ionicons"
+// import { Colors } from "react-native-paper";
 import User from "../../auth/User";
 
-const RegScreen = ({ navigation }) => {
+const RegScreen = React.memo(({ navigation }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -35,7 +36,7 @@ const RegScreen = ({ navigation }) => {
       source={require("../../assets/images/reg_gradientBg.png")}
     >
       <ScrollView style={{ width: "auto" }}>
-        <StatusBar backgroundColor={Colors.amber900} />
+        <StatusBar backgroundColor="green" />
         <Text style={styles.title}>Registration</Text>
         <Text style={{ ...styles.message, ...TextStyles.message }}>
           Please, enter your details here to register for an account
@@ -43,73 +44,54 @@ const RegScreen = ({ navigation }) => {
         <View style={styles.logoContainer}>
           <Image
             style={styles.logo}
-            source={require("../../assets/images/brainstem_logo_black_white.png")}
+            source={require("../../assets/images/meristem_app_logo.png")}
           />
         </View>
         <View style={styles.loginCard}>
           <Text style={styles.title}>Welcome</Text>
           <View style={{ ...styles.row, ...styles.textInputCont }}>
-            <Image
-              style={styles.icon}
-              source={require("../../assets/images/brainstem_logo_black_white.png")}
-            />
+            <AntDesign name="man" size={22} color="green" />
             <TextInput
               style={styles.textInput}
               placeholder="First Name"
-              placeholderTextColor={Colors.amber900}
               defaultValue={firstName}
               onChangeText={(newFirstName) => setFirstName(newFirstName)}
             />
           </View>
           <View style={{ ...styles.row, ...styles.textInputCont }}>
-            <Image
-              style={styles.icon}
-              source={require("../../assets/images/brainstem_logo_black_white.png")}
-            />
+          <AntDesign name="man" size={22} color="green" />
             <TextInput
               style={styles.textInput}
               placeholder="Last Name"
-              placeholderTextColor={Colors.amber900}
               defaultValue={lastName}
               onChangeText={(newLastName) => setLastName(newLastName)}
             />
           </View>
 
           <View style={{ ...styles.row, ...styles.textInputCont }}>
-            <Image
-              style={styles.icon}
-              source={require("../../assets/images/brainstem_logo_black_white.png")}
-            />
+          <AntDesign name="mail" size={22} color="green" />
             <TextInput
               style={styles.textInput}
               placeholder="Email"
-              placeholderTextColor={Colors.amber900}
               defaultValue={email}
               onChangeText={(newEmail) => setEmail(newEmail)}
             />
           </View>
           <View style={{ ...styles.row, ...styles.textInputCont }}>
-            <Image
-              style={styles.icon}
-              source={require("../../assets/images/brainstem_logo_black_white.png")}
-            />
+            <AntDesign name="key" size={22} color="green" />
             <TextInput
               style={styles.textInput}
               placeholder="Password"
-              placeholderTextColor={Colors.amber900}
               defaultValue={password}
               onChangeText={(newPassword) => setPassword(newPassword)}
+              secureTextEntry
             />
           </View>
           <View style={{ ...styles.row, ...styles.textInputCont }}>
-            <Image
-              style={styles.icon}
-              source={require("../../assets/images/brainstem_logo_black_white.png")}
-            />
+            <AntDesign name="key" size={22} color="green" />
             <TextInput
               style={styles.textInput}
-              placeholder="Mobile Number"
-              placeholderTextColor={Colors.amber900}
+              placeholder="Mobile"
               defaultValue={mobile}
               onChangeText={(newMobile) => setMobile(newMobile)}
             />
@@ -145,6 +127,6 @@ const RegScreen = ({ navigation }) => {
       </ScrollView>
     </ImageBackground>
   );
-};
+});
 
 export default RegScreen;

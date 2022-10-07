@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import {
   View,
   Text,
@@ -15,7 +15,7 @@ import { Colors } from "react-native-paper";
 import { useSelector, useDispatch } from "react-redux";
 import { logOutUser } from "../../app_store/usersSlice";
 
-const ProfileScreen = ({ navigation }) => {
+const ProfileScreen = React.memo(({ navigation }) => {
   const { users } = useSelector((state) => state.users);
   const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ const ProfileScreen = ({ navigation }) => {
       style={{ flex: 1, marginTop: 50 }}
       source={require("../../assets/images/news_bg_gradient.png")}
     >
-      <StatusBar backgroundColor="#f4511e" />
+      <StatusBar backgroundColor="green" />
 
       <TouchableOpacity onPress={() => {}}>
         <Image
@@ -57,6 +57,7 @@ const ProfileScreen = ({ navigation }) => {
             Alert.alert("LOGOUT WARNING", "Proceed to log out", [
               {
                 text: "Confirm LogOut",
+                style: {color: 'green'},
                 onPress: () => {
                   dispatch(logOutUser({}));
                   navigation.navigate("Login");
@@ -78,7 +79,7 @@ const ProfileScreen = ({ navigation }) => {
               textTransform: "capitalize",
               textAlign: "center",
               paddingVertical: 10,
-              backgroundColor: Colors.amber900,
+              backgroundColor: "green",
               color: Colors.white,
               fontSize: 22,
               borderRadius: 10,
@@ -90,6 +91,6 @@ const ProfileScreen = ({ navigation }) => {
       </ScrollView>
     </ImageBackground>
   );
-};
+});
 
 export default ProfileScreen;

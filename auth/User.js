@@ -13,6 +13,10 @@ class User {
 
   async authenticateUserInput(user, navigation) {
     //performing a simple input check
+    //one column is used to take password input 
+    //to limit the scope of this assessment
+    //Normally, it should have two column
+    // and a check for same input should have been done
     if (
       user.firstName.length <= 3 ||
       user.lastName.length <= 3 ||
@@ -40,8 +44,8 @@ class User {
               console.log("Results", result);
               if (result.rowsAffected > 0) {
                 Alert.alert(
-                  "Success",
-                  "You are Registered Successfully!",
+                  "Successful!!!",
+                  "You are Registered Successfully",
                   [
                     {
                       text: "Login",
