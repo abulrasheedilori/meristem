@@ -21,6 +21,7 @@ IMAGES
 
 ![WhatsApp Image 2022-10-07 at 10 57 39 AM](https://user-images.githubusercontent.com/54009597/194529332-4e73b64a-8193-467e-a2f4-d0d3f121d3a4.jpeg)
 
+
 2. Registration Page
 
 ![WhatsApp Image 2022-10-07 at 10 57 38 AM](https://user-images.githubusercontent.com/54009597/194529430-37a0b5b5-0bd4-43f8-b3b5-ec78f57b15b6.jpeg)
@@ -40,6 +41,7 @@ IMAGES
 6. Admin Error
 
 ![WhatsApp Image 2022-10-07 at 10 57 38 AM (1)](https://user-images.githubusercontent.com/54009597/194529530-01e2713b-7049-48de-b7bd-8fe800e69646.jpeg)
+
 
 7. Registration Error
 
